@@ -1,0 +1,69 @@
+program RegisterRoulette;
+
+VAR
+  { Output of Discount VAR}
+  DiscountPercent { percent of Discount }: longint;
+  DiscOutput { Discount after Total }: real;
+  { Input for Items }
+  itemA,itemB,itemC: string;
+
+  {Input for Item Pricing }
+  PriceA,PriceB,PriceC: real;
+
+  { Item Totals }
+  ItemTotals: real;
+begin
+  writeln('RegisterRoulette by Ian Hess V1.0 02/01/19'); {1: Identification}
+  writeln; {Empty Line}
+  writeln; {Empty Line}
+
+  { Welcome Message }
+  writeln('Welcome to the Discount System for the Store!');
+  writeln('Press ANY Key to Start!');
+  readln; //Pause until Any Key is Pressed
+
+
+  { Input Items and Pricing }
+  //Item 1
+  writeln('Please input first item into the system!');
+  readln(itemA);
+  writeln('Please INPUT the Price for the item - ', itemA, ':');
+  readln(PriceA);
+  writeln('(+) ', itemA, ' Price: ', PriceA:0:2, '!');
+
+        //Item 2
+  writeln('Please input second item into the system!');
+  readln(itemB);
+  writeln('Please INPUT the Price for the item - ', itemB, ':');
+  readln(PriceB);
+  writeln('(+) ', itemB, ' Price: ', PriceB:0:2, '!');
+
+                 //Item 3
+  writeln('Please input third item into the system!');
+  readln(itemC);
+  writeln('Please INPUT the Price for the item - ', itemC, ':');
+  readln(PriceC);
+  writeln('(+) ', itemC, ' Price: ', PriceC:0:2, '!');
+
+
+  randomize;  {Start the Randomize}
+
+
+  { Starts the MATH }
+  DiscountPercent := ((random(5) + 1) * 10);
+  ItemTotals := (PriceA + PriceB + PriceC);
+  DiscOutput := (ItemTotals / DiscountPercent);
+
+
+  { Write the OutPUT }
+  writeln('You saved ', DiscountPercent, '% today Register Roulette');
+  writeln('*** YOUR ITEMS ***');
+  writeln(itemA, ' Original Price $', PriceA:0:2, ', Discounted: $', (abs((PriceA * DiscountPercent / 100) - PriceA)):0:2);
+  writeln(itemB, ' Original Price $', PriceB:0:2, ', Discounted: $', (abs((PriceB * DiscountPercent / 100) - PriceB)):0:2);
+  writeln(itemC, ' Original Price $', PriceC:0:2, ', Discounted: $', (abs((PriceC * DiscountPercent / 100) - PriceC)):0:2);
+  writeln;
+  writeln('Toal Owed: $', (ItemTotals - DiscOutput):0:2);
+  writeln('You saved $', DiscOutput:0:2, ' today with register roulette!');
+
+readln;
+end.
